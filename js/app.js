@@ -69,9 +69,10 @@ let categories = [
   { name: "US Treaty Ally", countries: ["JPN", "KOR", "PHL", "THA", "AUS"], color: "#0096c7" },
   {
     name: "Wang YI",
-    countries: ["TWN", "TLS", "PNG", "SLB", "VUT", "FJI", "TON", "WSM", "KIR"],
+    countries: ["TLS", "PNG", "SLB", "VUT", "FJI", "TON", "WSM", "KIR"],
     color: "#eb0000"
   },
+  {name: "Taiwan", countries: ["TWN"], color: "rgba(11, 213, 42, 0.69)"}
 ];
 
 
