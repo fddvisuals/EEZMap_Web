@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Map Filters</title>
+  <!-- Import Mapbox CSS -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #filter-group {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1;
+      background-color: white;
+      padding: 10px;
+      border-radius: 3px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      line-height: 24px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .filter-group input {
+      margin-right: 3px;
+    }
+
+    .filter-group label {
+      display: block;
+      margin-bottom: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map" style="width: 100%; height: 100vh;"></div>
+
+  <div id="filter-group" style="margin-top: 20px;">
+    <!-- The filters will be added here by the JavaScript code -->
+  </div>
+
+  <!-- Import Mapbox JavaScript -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+
+  <!-- Import your JavaScript file -->
+  <script src="app.js"></script>
+</body>
+
+</html>
