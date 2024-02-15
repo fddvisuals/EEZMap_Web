@@ -12,7 +12,7 @@ const map = new mapboxgl.Map({
 map.on("load", function () {
   map.addSource("data", {
     type: "geojson",
-    data: "data.geojson",
+    data: "src/data.geojson",
   });
 
   map.addLayer({
