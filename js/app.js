@@ -26,13 +26,15 @@ map.on("load", function () {
         ["get", "ISO_SOV1"],
         ["USA"],
         "#03045e",
-        ["PLW", "FSM", "MHL"],
-        "#104b95",
-        ["JPN", "KOR", "PHL", "THA", "AUS"],
-        "#0096c7",
-        ["TWN"],
-        "rgba(11, 213, 42, 0.69)",
-        ["TLS", "PNG", "SLB", "VUT", "FJI", "TON", "WSM", "KIR"],
+        // ["PLW", "FSM", "MHL"],
+        // "#104b95",
+        // ["JPN", "KOR", "PHL", "THA", "AUS"],
+        // "#0096c7",
+        // ["TWN"],
+        // "rgba(11, 213, 42, 0.69)",
+        // ["TLS", "PNG", "SLB", "VUT", "FJI", "TON", "WSM", "KIR"],
+        // "#eb0000",
+        ["CUB", "CYP", "DOM", "CZE", "DJI", "DMA", "ECU", "EGY", "SLV", "GNQ", "ERI", "EST", "ETH", "FJI", "GAB", "GMB", "GEO", "GHA", "GRC", "GRD", "GIN", "GNB", "GUY", "HND", "HUN", "IDN", "IRN", "IRQ", "ITA", "JAM", "JOR", "KAZ", "KEN", "KIR", "KOR", "KWT", "KGZ", "LAO", "LVA", "LBN", "LSO", "LBR", "LBY", "LTU", "LUX", "MDG", "MWI", "MYS", "MDV", "MLI", "MLT", "MRT", "FSM", "MDA", "MNG", "MNE", "MAR", "MOZ", "MMR", "NAM", "NPL", "NZL", "NIC", "NER", "NGA", "NIU", "MKD", "OMN", "PAK", "PAN", "PNG", "PER", "PHL", "POL", "PRT", "QAT", "ROU", "RUS", "RWA", "WSM", "SAU", "SEN", "SRB", "SYC", "SLE", "SGP", "SVK", "SVN", "SLB", "SOM", "ZAF", "SSD", "LKA", "SDN", "SUR", "SYR", "TJK", "TZA", "THA", "TLS", "TGO", "TON", "TTO", "TUN", "TUR", "TKM", "UGA", "UKR", "ARE", "URY", "UZB", "VUT", "VEN", "VNM", "YEM", "ZMB", "ZWE"],
         "#eb0000",
         "rgba(96, 92, 92, 0.5)",
       ],
@@ -68,12 +70,13 @@ let categories = [
   { name: "USA", countries: ["USA"], color: "#03045e" },
   { name: "US FAS", countries: ["PLW", "FSM", "MHL"], color: "#104b95" },
   { name: "US Treaty Ally", countries: ["JPN", "KOR", "PHL", "THA", "AUS"], color: "#0096c7" },
-  {
-    name: "Wang YI",
-    countries: ["TLS", "PNG", "SLB", "VUT", "FJI", "TON", "WSM", "KIR"],
-    color: "#eb0000"
-  },
-  {name: "Taiwan", countries: ["TWN"], color: "rgba(11, 213, 42, 0.69)"}
+  // {
+  //   name: "Wang YI",
+  //   countries: ["TLS", "PNG", "SLB", "VUT", "FJI", "TON", "WSM", "KIR"],
+  //   color: "#eb0000"
+  // },
+  {name: "Taiwan", countries: ["TWN"], color: "rgba(11, 213, 42, 0.69)"},
+  {name: "BRI", countries: ["CUB", "CYP", "DOM", "CZE", "DJI", "DMA", "ECU", "EGY", "SLV", "GNQ", "ERI", "EST", "ETH", "FJI", "GAB", "GMB", "GEO", "GHA", "GRC", "GRD", "GIN", "GNB", "GUY", "HND", "HUN", "IDN", "IRN", "IRQ", "ITA", "JAM", "JOR", "KAZ", "KEN", "KIR", "KOR", "KWT", "KGZ", "LAO", "LVA", "LBN", "LSO", "LBR", "LBY", "LTU", "LUX", "MDG", "MWI", "MYS", "MDV", "MLI", "MLT", "MRT", "FSM", "MDA", "MNG", "MNE", "MAR", "MOZ", "MMR", "NAM", "NPL", "NZL", "NIC", "NER", "NGA", "NIU", "MKD", "OMN", "PAK", "PAN", "PNG", "PER", "PHL", "POL", "PRT", "QAT", "ROU", "RUS", "RWA", "WSM", "SAU", "SEN", "SRB", "SYC", "SLE", "SGP", "SVK", "SVN", "SLB", "SOM", "ZAF", "SSD", "LKA", "SDN", "SUR", "SYR", "TJK", "TZA", "THA", "TLS", "TGO", "TON", "TTO", "TUN", "TUR", "TKM", "UGA", "UKR", "ARE", "URY", "UZB", "VUT", "VEN", "VNM", "YEM", "ZMB", "ZWE"], color: "#eb0000"},
 ];
 
 
