@@ -5,15 +5,50 @@ const map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/fddvisuals/clsnduc8o01tx01qrgf7ubzyu",
   // style: "mapbox://styles/mapbox/light-v11",
-  zoom: 3.04,
-  center: [153.244, 6.439],
+  minZoom: 2.5443617869623485,
+  maxZoom: 2.5443617869623485,
+  center: [-179.27464330494598, 10.728509690340346],
+
 });
 
 // Load GeoJSON data
 map.on("load", function () {
+  //no pan
+  map.dragPan.disable();
+  //no movement
+  map.scrollZoom.disable();
+  //no zoom
+  map.doubleClickZoom.disable();
+  //no rotation`
+  map.touchZoomRotate.disableRotation();
+
   map.addSource("data", {
     type: "geojson",
     data: "src/data.geojson",
+  });
+
+  // 1. Load the image using loadImage and add with addImage
+  map.loadImage("src/twemoji_flag-china.png", function (error, image) {
+    if (error) throw error;
+    map.addImage("my-icon", image);
+  });
+
+  // 2. Create a new layer using addLayer and specify the icon-image
+  map.addLayer({
+    id: "bri-countries",
+    type: "symbol",
+    source: "data",
+    layout: {
+      "icon-image": "my-icon",
+      "icon-size": 1,
+      "text-field": "{name}",
+      "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+      "text-offset": [0, 0.6],
+      "text-anchor": "top",
+    },
+    filter: ["in", "ISO_SOV1"].concat(
+      categories.find((category) => category.name === "BRI").countries
+    ),
   });
 
   map.addLayer({
@@ -21,23 +56,8 @@ map.on("load", function () {
     type: "fill",
     source: "data",
     paint: {
-      "fill-color": [
-        "match",
-        ["get", "ISO_SOV1"],
-        ["USA"],
-        "#03045e",
-        // ["PLW", "FSM", "MHL"],
-        // "#104b95",
-        // ["JPN", "KOR", "PHL", "THA", "AUS"],
-        // "#0096c7",
-        // ["TWN"],
-        // "rgba(11, 213, 42, 0.69)",
-        // ["TLS", "PNG", "SLB", "VUT", "FJI", "TON", "WSM", "KIR"],
-        // "#eb0000",
-        ["CUB", "CYP", "DOM", "CZE", "DJI", "DMA", "ECU", "EGY", "SLV", "GNQ", "ERI", "EST", "ETH", "FJI", "GAB", "GMB", "GEO", "GHA", "GRC", "GRD", "GIN", "GNB", "GUY", "HND", "HUN", "IDN", "IRN", "IRQ", "ITA", "JAM", "JOR", "KAZ", "KEN", "KIR", "KOR", "KWT", "KGZ", "LAO", "LVA", "LBN", "LSO", "LBR", "LBY", "LTU", "LUX", "MDG", "MWI", "MYS", "MDV", "MLI", "MLT", "MRT", "FSM", "MDA", "MNG", "MNE", "MAR", "MOZ", "MMR", "NAM", "NPL", "NZL", "NIC", "NER", "NGA", "NIU", "MKD", "OMN", "PAK", "PAN", "PNG", "PER", "PHL", "POL", "PRT", "QAT", "ROU", "RUS", "RWA", "WSM", "SAU", "SEN", "SRB", "SYC", "SLE", "SGP", "SVK", "SVN", "SLB", "SOM", "ZAF", "SSD", "LKA", "SDN", "SUR", "SYR", "TJK", "TZA", "THA", "TLS", "TGO", "TON", "TTO", "TUN", "TUR", "TKM", "UGA", "UKR", "ARE", "URY", "UZB", "VUT", "VEN", "VNM", "YEM", "ZMB", "ZWE"],
-        "#eb0000",
+      "fill-color": 
         "rgba(96, 92, 92, 0.5)",
-      ],
       "fill-opacity": 0.7,
       "fill-outline-color": "#FFFFFF",
     },
@@ -66,39 +86,54 @@ map.on("load", function () {
 // Toggleable Filters
 const filterGroup = document.getElementById("filter-group");
 
-let categories = [
-  { name: "USA", countries: ["USA"], color: "#03045e" },
-  { name: "US FAS", countries: ["PLW", "FSM", "MHL"], color: "#104b95" },
-  { name: "US Treaty Ally", countries: ["JPN", "KOR", "PHL", "THA", "AUS"], color: "#0096c7" },
-  // {
-  //   name: "Wang YI",
-  //   countries: ["TLS", "PNG", "SLB", "VUT", "FJI", "TON", "WSM", "KIR"],
-  //   color: "#eb0000"
-  // },
-  {name: "Taiwan", countries: ["TWN"], color: "rgba(11, 213, 42, 0.69)"},
-  {name: "BRI", countries: ["CUB", "CYP", "DOM", "CZE", "DJI", "DMA", "ECU", "EGY", "SLV", "GNQ", "ERI", "EST", "ETH", "FJI", "GAB", "GMB", "GEO", "GHA", "GRC", "GRD", "GIN", "GNB", "GUY", "HND", "HUN", "IDN", "IRN", "IRQ", "ITA", "JAM", "JOR", "KAZ", "KEN", "KIR", "KOR", "KWT", "KGZ", "LAO", "LVA", "LBN", "LSO", "LBR", "LBY", "LTU", "LUX", "MDG", "MWI", "MYS", "MDV", "MLI", "MLT", "MRT", "FSM", "MDA", "MNG", "MNE", "MAR", "MOZ", "MMR", "NAM", "NPL", "NZL", "NIC", "NER", "NGA", "NIU", "MKD", "OMN", "PAK", "PAN", "PNG", "PER", "PHL", "POL", "PRT", "QAT", "ROU", "RUS", "RWA", "WSM", "SAU", "SEN", "SRB", "SYC", "SLE", "SGP", "SVK", "SVN", "SLB", "SOM", "ZAF", "SSD", "LKA", "SDN", "SUR", "SYR", "TJK", "TZA", "THA", "TLS", "TGO", "TON", "TTO", "TUN", "TUR", "TKM", "UGA", "UKR", "ARE", "URY", "UZB", "VUT", "VEN", "VNM", "YEM", "ZMB", "ZWE"], color: "#eb0000"},
-];
+let categories = [];
 
 
-//hover color
+d3.csv("/src/data.csv")
+  .then(function (data) {
+    // Parse each object in the CSV data
+    data.forEach(function(row) {
+      // Check if 'countries' exists on the row
+      if (row.countries !== undefined) {
+        // Convert 'countries' string to an array
+        let countriesArray = row.countries.split(", ");
+    
+        // Push each category to the 'categories' array
+        categories.push({
+          name: row.name,
+          countries: countriesArray,
+          color: row.color
+        });
+      } else {
+        console.log(`"countries" is undefined for row ${JSON.stringify(row)} `);
+      }
+    });
 
-categories.forEach((category) => {
-  let input = document.createElement("input");
-  input.type = "checkbox";
-  input.id = category.name;
-  input.checked = true;
+    categories.forEach((category) => {
+      let input = document.createElement("input");
+      input.type = "checkbox";
+      input.id = category.name;
+      input.checked = true;
 
-  input.addEventListener("change", function () {
-    updateMap();
+      input.addEventListener("change", function () {
+        updateMap();
+      });
+
+      let label = document.createElement("label");
+      label.setAttribute("for", category.name);
+      label.textContent = category.name;
+
+      filterGroup.appendChild(input);
+      filterGroup.appendChild(label);
+    });
+
+  })
+  .catch(function (error) {
+    console.log(error);
   });
 
-  let label = document.createElement("label");
-  label.setAttribute("for", category.name);
-  label.textContent = category.name;
 
-  filterGroup.appendChild(input);
-  filterGroup.appendChild(label);
-});
+
 
 function updateMap() {
   let checkedCountriesColors = [];
@@ -107,7 +142,10 @@ function updateMap() {
     let checkbox = document.getElementById(category.name);
     if (checkbox.checked) {
       category.countries.forEach(country => {
-        checkedCountriesColors.push(country, category.color);
+        // Do not push duplicates into the array
+        if (!checkedCountriesColors.includes(country)) {
+          checkedCountriesColors.push(country, category.color);
+        }
       });
     }
   });
@@ -120,4 +158,20 @@ function updateMap() {
     "rgba(96, 92, 92, 0.5)" // Default fill color for unchecked countries
   ]);
 }
+
+// Add event listener for when map movement ends
+map.on('moveend', function() {
+  // Get current center
+  var center = map.getCenter();
+
+  // Get current zoom level
+  var zoom = map.getZoom();
+
+  var bounds = map.getBounds();
+
+  // Log center and zoom to console
+  console.log('Center:', center);
+  console.log('Zoom:', zoom);
+  console.log('Bounds:', bounds);
+});
 
