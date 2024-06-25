@@ -13,14 +13,14 @@ const map = new mapboxgl.Map({
 
 // Load GeoJSON data
 map.on("load", function () {
-  //no pan
-  map.dragPan.disable();
-  //no movement
-  map.scrollZoom.disable();
-  //no zoom
-  map.doubleClickZoom.disable();
-  //no rotation`
-  map.touchZoomRotate.disableRotation();
+  // //no pan
+  // map.dragPan.disable();
+  // //no movement
+  // map.scrollZoom.disable();
+  // //no zoom
+  // map.doubleClickZoom.disable();
+  // //no rotation`
+  // map.touchZoomRotate.disableRotation();
 
   map.addSource("data", {
     type: "geojson",

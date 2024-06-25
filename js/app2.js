@@ -15,10 +15,10 @@ let categories = [];
 
 map.on("load", () => {
 
-  map.dragPan.disable();
-  map.scrollZoom.disable();
-  map.doubleClickZoom.disable();
-  map.touchZoomRotate.disableRotation();
+  // map.dragPan.disable();
+  // map.scrollZoom.disable();
+  // map.doubleClickZoom.disable();
+  // map.touchZoomRotate.disableRotation();
 
   // Load data and add image only once map has loaded
   Promise.all([
