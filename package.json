@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "geojson-polygon-labels": "^2.0.1"
+  }
+}
